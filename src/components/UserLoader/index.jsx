@@ -23,6 +23,17 @@ export default class UserLoader extends Component {
     }
 
     render() {
-        return <div></div>
+        const {users, isFetching, error} = this.state;
+
+        if(isFetching) return <div>LOADING...</div>
+        if(error) return <div>ERROR!</div>
+        return (
+        <div>
+            <h1>USER LIST</h1>
+            <ul>
+                {users.map(user =>(<li key={user.login.uuid}></li>))}
+            </ul>
+        </div>
+        );
     }
 }
